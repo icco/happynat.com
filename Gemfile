@@ -6,9 +6,6 @@ gem "sequel"
 gem "sinatra", :git => "git://github.com/sinatra/sinatra.git"
 gem "thin"
 
-# For DB
-gem "sqlite3"
-
 # For Authentication
 gem "omniauth-twitter"  # https://github.com/arunagw/omniauth-twitter
 gem "omniauth-facebook" # https://github.com/mkdynamic/omniauth-facebook
