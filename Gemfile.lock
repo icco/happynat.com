@@ -1,31 +1,65 @@
+GIT
+  remote: git://github.com/sinatra/sinatra.git
+  revision: 4490a7638063bf3707fc4c7c8b16ab039cf91909
+  specs:
+    sinatra (1.4.0)
+      rack (~> 1.3, >= 1.3.6)
+      rack-protection (~> 1.2)
+      tilt (~> 1.3, >= 1.3.3)
+
 GEM
   remote: http://rubygems.org/
   specs:
     addressable (2.2.6)
     commonjs (0.2.0)
       therubyracer (~> 0.9.9)
+    daemons (1.1.5)
+    eventmachine (0.12.10)
+    faraday (0.7.5)
+      addressable (~> 2.2.6)
+      multipart-post (~> 1.1.3)
+      rack (>= 1.1.0, < 2)
     hashie (1.2.0)
     heroku (2.17.0)
       launchy (>= 0.3.2)
       rest-client (~> 1.6.1)
       rubyzip
       term-ansicolor (~> 1.0.5)
+    i18n (0.6.0)
     launchy (2.0.5)
       addressable (~> 2.2.6)
     less (2.0.8)
       commonjs (~> 0.2.0)
       therubyracer (~> 0.9.9)
     libv8 (3.3.10.4)
+    mail (2.3.0)
+      i18n (>= 0.4.0)
+      mime-types (~> 1.16)
+      treetop (~> 1.4.8)
     mime-types (1.17.2)
+    multi_json (1.0.4)
+    multipart-post (1.1.4)
     oauth (0.4.5)
+    oauth2 (0.5.2)
+      faraday (~> 0.7)
+      multi_json (~> 1.0)
     omniauth (1.0.1)
       hashie (~> 1.2)
       rack
+    omniauth-facebook (1.2.0)
+      omniauth-oauth2 (~> 1.0.0)
     omniauth-oauth (1.0.0)
       oauth
       omniauth (~> 1.0)
+    omniauth-oauth2 (1.0.0)
+      oauth2 (~> 0.5.0)
+      omniauth (~> 1.0)
     omniauth-twitter (0.0.7)
       omniauth-oauth (~> 1.0)
+    pg (0.12.2)
+    polyglot (0.3.3)
+    pony (1.4)
+      mail (> 2.0)
     rack (1.4.0)
     rack-protection (1.2.0)
       rack
@@ -34,15 +68,18 @@ GEM
       mime-types (>= 1.16)
     rubyzip (0.9.5)
     sequel (3.31.0)
-    sinatra (1.3.2)
-      rack (~> 1.3, >= 1.3.6)
-      rack-protection (~> 1.2)
-      tilt (~> 1.3, >= 1.3.3)
     sqlite3 (1.3.5)
     term-ansicolor (1.0.7)
     therubyracer (0.9.9)
       libv8 (~> 3.3.10)
+    thin (1.3.1)
+      daemons (>= 1.0.9)
+      eventmachine (>= 0.12.6)
+      rack (>= 1.0.0)
     tilt (1.3.3)
+    treetop (1.4.10)
+      polyglot
+      polyglot (>= 0.3.1)
 
 PLATFORMS
   ruby
@@ -50,8 +87,12 @@ PLATFORMS
 DEPENDENCIES
   heroku
   less
+  omniauth-facebook
   omniauth-twitter
+  pg
+  pony
   rake
   sequel
-  sinatra
+  sinatra!
   sqlite3
+  thin

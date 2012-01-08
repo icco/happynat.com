@@ -1,15 +1,34 @@
-#!/usr/bin/env ruby
-# An app for ...
+# An app for being happy
 # @author Nat Welch - https://github.com/icco
 
 configure do
   set :sessions, true
   DB = Sequel.connect(ENV['DATABASE_URL'] || 'sqlite://db/data.db')
+
+  # for enabling nice errors until we launch
+  set :show_exceptions, true
+end
+
+# Rack Middleware for Authentication
+use OmniAuth::Builder do
+  provider :twitter,  ENV['TWITTER_KEY'],  ENV['TWITTER_SECRET']
 end
 
 get '/' do
   erb :index, :locals => {}
 end
+
+# Auth Lambda.
+auth = lambda do
+  auth = request.env['omniauth.auth']
+
+  # TODO: Log the auth information somewhere!
+  p auth
+end
+
+# Actual auth endpoints.
+post '/auth/twitter/callback', &auth
+get  '/auth/twitter/callback', &auth
 
 get '/:id' do
   Entry.filter(:id => params[:id]).first.to_s
