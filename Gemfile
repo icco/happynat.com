@@ -3,7 +3,7 @@ source :rubygems
 gem "less"
 gem "rake"
 gem "sequel"
-gem "sinatra", :git => "git://github.com/sinatra/sinatra.git"
+gem "sinatra"
 gem "thin"
 
 # For Authentication

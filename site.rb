@@ -15,7 +15,7 @@ use OmniAuth::Builder do
 end
 
 get '/' do
-  erb :index, :locals => {}
+  erb :index, :locals => { :entries => Entry.all }
 end
 
 post '/' do
