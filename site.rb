@@ -10,9 +10,9 @@ configure do
 end
 
 # Rack Middleware for Authentication
-#use OmniAuth::Builder do
-#  provider :twitter,  ENV['TWITTER_KEY'],  ENV['TWITTER_SECRET']
-#end
+use OmniAuth::Builder do
+  provider :twitter,  ENV['TWITTER_KEY'],  ENV['TWITTER_SECRET']
+end
 
 get '/' do
   erb :index, :locals => { :entries => Entry.all }
