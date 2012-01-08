@@ -22,9 +22,9 @@ post '/' do
   redirect '/'
 end
 
-get '/style.css' do
+get '/css/style.css' do
   content_type 'text/css', :charset => 'utf-8'
-  less :style
+  less "css/style"
 end
 
 # Auth Lambda.
