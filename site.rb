@@ -49,7 +49,7 @@ end
 
 # For getting a single post
 get '/view/:id' do
-  if params[:id].is_a? Integer
+  if params[:id].to_i
     Entry.filter(:id => params[:id]).first.to_s
   else
     404
