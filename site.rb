@@ -42,8 +42,12 @@ end
 post '/auth/:name/callback', &auth
 get  '/auth/:name/callback', &auth
 
-get '/:id' do
-  Entry.filter(:id => params[:id]).first.to_s
+get '/view/:id' do
+  if params[:id].is_a? Integer
+    Entry.filter(:id => params[:id]).first.to_s
+  else
+    error "404"
+  end
 end
 
 class Entry < Sequel::Model(:entries)
