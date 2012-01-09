@@ -33,7 +33,10 @@ auth = lambda do
   auth = request.env['omniauth.auth']
 
   # TODO: Log the auth information somewhere!
-  p auth
+  p auth["info"]
+
+  session['username'] = auth["info"].nickname
+  redirect '/'
 end
 
 # Actual auth endpoints.
