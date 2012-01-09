@@ -45,5 +45,5 @@ end
 
 desc "Run a local server."
 task :local do
-  sh "bundle exec thin start"
+  sh "bundle exec shotgun -s thin -p 3000"
 end
