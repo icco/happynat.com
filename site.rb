@@ -19,6 +19,14 @@ get '/' do
 end
 
 post '/' do
+  if !session["username"].nil?
+    entry = Entry.new
+    entry.create_date = Time.now
+    entry.username = session["username"]
+    entry.text = params["text"]
+    entry.save
+  end
+
   redirect '/'
 end
 
