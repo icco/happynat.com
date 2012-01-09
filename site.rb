@@ -3,6 +3,7 @@
 
 configure do
   set :sessions, true
+
   DB = Sequel.connect(ENV['DATABASE_URL'] || 'sqlite://db/data.db')
 
   # for enabling nice errors until we launch
@@ -36,8 +37,8 @@ auth = lambda do
 end
 
 # Actual auth endpoints.
-post '/auth/twitter/callback', &auth
-get  '/auth/twitter/callback', &auth
+post '/auth/:name/callback', &auth
+get  '/auth/:name/callback', &auth
 
 get '/:id' do
   Entry.filter(:id => params[:id]).first.to_s

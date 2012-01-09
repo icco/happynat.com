@@ -1,5 +1,6 @@
 source :rubygems
 
+gem "json"
 gem "less"
 gem "rake"
 gem "sequel"
@@ -7,8 +8,9 @@ gem "sinatra"
 gem "thin"
 
 # For Authentication
+gem "omniauth", :git => "https://github.com/intridea/omniauth.git"
 gem "omniauth-twitter"  # https://github.com/arunagw/omniauth-twitter
-gem "omniauth-facebook" # https://github.com/mkdynamic/omniauth-facebook
+gem "multi_json"
 
 # For sending email
 gem "pony" # http://devcenter.heroku.com/articles/sendgrid
@@ -22,4 +24,5 @@ end
 group :development, :test do
   gem "sqlite3"
   gem "heroku"
+  gem "shotgun"
 end
