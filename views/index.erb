@@ -7,7 +7,7 @@
 
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/text.css" />
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/stylentry.css" />
   </head>
   <body>
     <div class="container">
@@ -26,8 +26,8 @@
         <% entries.each do |entry| %>
           <li>
             <span class="reason"><%= entry.text %></span> -
-            <span class="when"><a href="/view/<%= e.id %>"><%= e.create_date.humanize %></a></span>
-            <span class="by">via <a href="http://twitter.com/<%= e.username %>">@<%= e.username %></a></span>
+            <span class="when"><a href="/view/<%= entry.id %>"><%= entry.create_datentry.humanize %></a></span>
+            <span class="by">via <a href="http://twitter.com/<%= entry.username %>">@<%= entry.username %></a></span>
           </li>
         <% end %>
       </ul>
