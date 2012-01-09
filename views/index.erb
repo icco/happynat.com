@@ -18,18 +18,17 @@
       </div>
 
       <div>
-        <a href='/auth/twitter'>Log in with Twitter.</a>
+        <% if session["username"] %>
+          <form action="/" method="post">
+            <textarea name="text" maxlength="255"></textarea>
+            <input class="submit" type="image" src="images/submit.png" alt="Submit" />
+            <input type="hidden" name="user" value="<%= session["username"] %>" />
+          </form>
+        <% else %>
+          <a href='/auth/twitter'>Log in with Twitter.</a>
+        <% end %>
       </div>
 
-      <% if session["username"] %>
-        <!--
-        <form action="/" method="post">
-          <input class="reason" type="text" name="text" maxlength="255" />
-          <input class="submit" type="image" src="images/submit.png" alt="Submit" />
-          <input type="hidden" name="user" value="<%= session["username"] %>" />
-        </form>
-        -->
-      <% end %>
       <!--
       <ul>
         <% entries.each do |entry| %>
