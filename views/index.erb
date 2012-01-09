@@ -20,8 +20,8 @@
           <span>
             <input id="twitter" name="auth" type="radio" value="twitter" checked />
             <label for="twitter">
-              <% if session["user"] %>
-                as @<%= session["user"] %>
+              <% if session["username"] %>
+                as @<%= session["username"] %>
               <% else %>
                 <a href='/auth/twitter'>log in with Twitter</a>
               <% end %>
