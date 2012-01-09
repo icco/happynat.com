@@ -13,22 +13,15 @@
     <div class="container">
       <h1>Happy Nat!</h1>
 
+      <% if session["username"] %>
         <form action="/" method="post">
           <input class="reason" type="text" name="reason" maxlength="255" />
           <input class="submit" type="image" src="images/submit.png" alt="Submit" />
-          <p class="auth">
-          <span>
-            <input id="twitter" name="auth" type="radio" value="twitter" checked />
-            <label for="twitter">
-              <% if session["username"] %>
-                as @<%= session["username"] %>
-              <% else %>
-                <a href='/auth/twitter'>log in with Twitter</a>
-              <% end %>
-            </label>
-          </span>
-          </p>
+          <input type="hidden" value="<%= session["username"] %>" />
         </form>
+      <% else %>
+        <a href='/auth/twitter'>log in with Twitter</a>
+      <% end %>
       <ul>
         <% entries.each do |entry| %>
           <li>
