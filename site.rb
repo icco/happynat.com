@@ -2,8 +2,6 @@
 # @author Nat Welch - https://github.com/icco
 
 configure do
-  set :sessions, true
-
   DB = Sequel.connect(ENV['DATABASE_URL'] || 'sqlite://db/data.db')
 
   # for enabling nice errors until we launch
@@ -11,6 +9,7 @@ configure do
 end
 
 # Rack Middleware for Authentication
+use Rack::Session::Cookie
 use OmniAuth::Builder do
   provider :twitter,  ENV['TWITTER_KEY'],  ENV['TWITTER_SECRET']
 end
