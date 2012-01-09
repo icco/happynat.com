@@ -7,21 +7,30 @@
 
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/text.css" />
-    <link rel="stylesheet" href="css/stylentry.css" />
+    <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
     <div class="container">
       <h1>Happy Nat!</h1>
 
+      <div>
+        <a href="http://www.flickr.com/photos/icco/6332322678/" title="Pumpkin coffee cake! by Nat W, on Flickr"><img src="http://farm7.staticflickr.com/6044/6332322678_c4c8b59c82.jpg" width="500" height="375" alt="Pumpkin coffee cake!"></a>
+      </div>
+
+      <div>
+        <a href='/auth/twitter'>Log in with Twitter.</a>
+      </div>
+
       <% if session["username"] %>
+        <!--
         <form action="/" method="post">
           <input class="reason" type="text" name="text" maxlength="255" />
           <input class="submit" type="image" src="images/submit.png" alt="Submit" />
-          <input type="hidden" value="<%= session["username"] %>" />
+          <input type="hidden" name="user" value="<%= session["username"] %>" />
         </form>
-      <% else %>
-        <a href='/auth/twitter'>log in with Twitter</a>
+        -->
       <% end %>
+      <!--
       <ul>
         <% entries.each do |entry| %>
           <li>
@@ -31,6 +40,7 @@
           </li>
         <% end %>
       </ul>
+      -->
     </div> <!-- end .container -->
   </body>
 </html>

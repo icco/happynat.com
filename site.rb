@@ -30,6 +30,32 @@ post '/' do
   redirect '/'
 end
 
+# For getting a period of time.
+get '/in/:year/:month/:day' do
+  day = params['day'].to_i
+  month = params['month'].to_i
+  year = params['year'].to_i
+
+  erb :day, :locals => {
+    :entries => Entry.filter(
+      'create_date >= ? and create_date < ?', 
+      Chronic.parse("#{day}/#{month}/#{year}"),
+      Chronic.parse("#{day+1}/#{month}/#{year}")
+    ).all
+  }
+end
+
+# TODO: add month and year pages
+
+# For getting a single post
+get '/view/:id' do
+  if params[:id].is_a? Integer
+    Entry.filter(:id => params[:id]).first.to_s
+  else
+    404
+  end
+end
+
 get '/css/style.css' do
   content_type 'text/css', :charset => 'utf-8'
   less "css/style"
@@ -40,7 +66,7 @@ auth = lambda do
   auth = request.env['omniauth.auth']
 
   # TODO: Log the auth information somewhere!
-  p auth["info"]
+  #p auth["info"]
 
   session['username'] = auth["info"].nickname
   redirect '/'
@@ -50,12 +76,8 @@ end
 post '/auth/:name/callback', &auth
 get  '/auth/:name/callback', &auth
 
-get '/view/:id' do
-  if params[:id].is_a? Integer
-    Entry.filter(:id => params[:id]).first.to_s
-  else
-    error "404"
-  end
+error 400...510 do
+  "Sorry there was a nasty error."
 end
 
 class Entry < Sequel::Model(:entries)

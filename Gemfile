@@ -1,5 +1,6 @@
 source :rubygems
 
+gem "chronic"
 gem "json"
 gem "less"
 gem "rake"
