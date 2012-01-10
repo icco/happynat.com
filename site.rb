@@ -16,7 +16,11 @@ use OmniAuth::Builder do
 end
 
 get '/' do
-  erb :index, :locals => { :entries => Entry.all }
+  erb :index
+end
+
+get '/list' do
+  erb :list, :locals => { :entries => Entry.all }
 end
 
 post '/' do

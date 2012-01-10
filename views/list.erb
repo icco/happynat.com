@@ -1,0 +1,9 @@
+<ul>
+  <% entries.each do |entry| %>
+    <li>
+    <span class="reason"><%= entry.text %></span> -
+    <span class="when"><a href="/view/<%= entry.id %>"><%= entry.create_date.humanize %></a></span>
+    <span class="by">via <a href="http://twitter.com/<%= entry.username %>">@<%= entry.username %></a></span>
+    </li>
+  <% end %>
+</ul>
