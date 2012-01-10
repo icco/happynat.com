@@ -31,21 +31,50 @@ post '/' do
 end
 
 # For getting a period of time.
-get '/in/:year/:month/:day' do
+get '/date/:year/:month/:day' do
   day = params['day'].to_i
   month = params['month'].to_i
   year = params['year'].to_i
 
   erb :day, :locals => {
     :entries => Entry.filter(
-      'create_date >= ? and create_date < ?', 
+      'create_date >= ? and create_date < ?',
       Chronic.parse("#{day}/#{month}/#{year}"),
       Chronic.parse("#{day+1}/#{month}/#{year}")
-    ).all
+    ).all,
+    :date => Chronic.parse("#{day}/#{month}/#{year}")
   }
 end
 
-# TODO: add month and year pages
+get '/date/:year/:month' do
+  day = 1
+  month = params['month'].to_i
+  year = params['year'].to_i
+
+  erb :month, :locals => {
+    :entries => Entry.filter(
+      'create_date >= ? and create_date < ?',
+      Chronic.parse("#{day}/#{month}/#{year}"),
+      Chronic.parse("#{day}/#{month+1}/#{year}")
+    ).all,
+    :date => Chronic.parse("#{day}/#{month}/#{year}")
+  }
+end
+
+get '/date/:year' do
+  day = 1
+  month = 1
+  year = params['year'].to_i
+
+  erb :year, :locals => {
+    :entries => Entry.filter(
+      'create_date >= ? and create_date < ?',
+      Chronic.parse("#{day}/#{month}/#{year}"),
+      Chronic.parse("#{day}/#{month}/#{year+1}")
+    ).all,
+    :date => Chronic.parse("#{day}/#{month}/#{year}")
+  }
+end
 
 # For getting a single post
 get '/view/:id' do
