@@ -105,10 +105,6 @@ end
 post '/auth/:name/callback', &auth
 get  '/auth/:name/callback', &auth
 
-error 400...510 do
-  "Sorry there was a nasty error."
-end
-
 class Entry < Sequel::Model(:entries)
 end
 
