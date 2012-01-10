@@ -3,6 +3,7 @@
 
 configure do
   DB = Sequel.connect(ENV['DATABASE_URL'] || 'sqlite://db/data.db')
+  DB.sql_log_level = :debug
 
   # for enabling nice errors until we launch
   set :show_exceptions, true
