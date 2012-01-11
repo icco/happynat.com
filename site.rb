@@ -92,7 +92,7 @@ end
 
 get '/css/style.css' do
   content_type 'text/css', :charset => 'utf-8'
-  less "css/style"
+  less :"css/style"
 end
 
 # Auth Lambda.
