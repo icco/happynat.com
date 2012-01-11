@@ -19,10 +19,13 @@
 
       <div class="login">
         <% if session["username"] %>
+          <p>What makes Nat happy?</p>
           <form action="/" method="post">
             <textarea name="text" maxlength="255"></textarea>
-            <input class="submit" type="image" src="images/submit.png" alt="Submit" />
             <input type="hidden" name="user" value="<%= session["username"] %>" />
+            <div class="alignright">
+              <input class="submit" type="image" src="images/submit.png" alt="Submit" />
+            </div>
           </form>
         <% else %>
           <a href='/auth/twitter'>Log in with Twitter</a>.
