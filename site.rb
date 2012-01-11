@@ -44,8 +44,8 @@ get '/date/:year/:month/:day' do
   erb :day, :locals => {
     :entries => Entry.filter(
       'create_date >= ? and create_date < ?',
-      Chronic.parse("#{day}/#{month}/#{year}"),
-      Chronic.parse("#{day+1}/#{month}/#{year}")
+      Chronic.parse("#{month}/#{day}/#{year}"),
+      Chronic.parse("#{month}/#{day+1}/#{year}")
     ).all,
     :date => Chronic.parse("#{day}/#{month}/#{year}")
   }
@@ -59,10 +59,10 @@ get '/date/:year/:month' do
   erb :month, :locals => {
     :entries => Entry.filter(
       'create_date >= ? and create_date < ?',
-      Chronic.parse("#{day}/#{month}/#{year}"),
-      Chronic.parse("#{day}/#{month+1}/#{year}")
+      Chronic.parse("#{month}/#{day}/#{year}"),
+      Chronic.parse("#{month+1}/#{day}/#{year}")
     ).all,
-    :date => Chronic.parse("#{day}/#{month}/#{year}")
+    :date => Chronic.parse("#{month}/#{day}/#{year}")
   }
 end
 
