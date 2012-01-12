@@ -111,6 +111,14 @@ post '/auth/:name/callback', &auth
 get  '/auth/:name/callback', &auth
 
 class Entry < Sequel::Model(:entries)
+  def html
+    markdown = RDiscount.new(
+      self.text,
+      :smart,
+      :filter_html
+    )
+
+    return markdown.to_html
 end
 
 # Nice time printing

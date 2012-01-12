@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+
+    <title>Happy Nat .com</title>
+
+    <link rel="stylesheet" href="/css/reset.css" />
+    <link rel="stylesheet" href="/css/text.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <%= date.year %>
+      <ul>
+        <% entries.each do |entry| %>
+          <li>
+            <span class="reason"><%= entry.html %></span> -
+            <span class="when"><a href="/view/<%= entry.id %>"><%= entry.create_date.humanize %></a></span>
+            <span class="by">via <a href="http://twitter.com/<%= entry.username %>">@<%= entry.username %></a></span>
+          </li>
+        <% end %>
+      </ul>
+    </div> <!-- end .container -->
+  </body>
+</html>
