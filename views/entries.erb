@@ -1,0 +1,7 @@
+<ul>
+  <% entries.each do |entry| %>
+    <li>
+      <%= erb :entry, :locals => { 'entry' => entry } %>
+    </li>
+  <% end %>
+</ul>
