@@ -119,6 +119,7 @@ class Entry < Sequel::Model(:entries)
     )
 
     return markdown.to_html
+  end
 end
 
 # Nice time printing
