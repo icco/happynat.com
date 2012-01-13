@@ -1,9 +1,18 @@
-<ul>
-  <% entries.each do |entry| %>
-    <li>
-    <span class="reason"><%= entry.text %></span> -
-    <span class="when"><a href="/view/<%= entry.id %>"><time datetime="<%= entry.create_date.strftime("%FT%T%z") %>"><%= entry.create_date.humanize %></time></a></span>
-    <span class="by">via <a href="http://twitter.com/<%= entry.username %>">@<%= entry.username %></a></span>
-    </li>
-  <% end %>
-</ul>
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+
+    <title>Happy Nat .com</title>
+
+    <link rel="stylesheet" href="/css/reset.css" />
+    <link rel="stylesheet" href="/css/text.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <%= date %>
+      <%= erb :entries, :locals => { 'entries' => entries } %>
+    </div> <!-- end .container -->
+  </body>
+</html>
