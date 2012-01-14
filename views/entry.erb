@@ -1,5 +1,7 @@
-<div class="reason">
-  <%= entry.html %>
-</div> 
-<span class="when"> @ <a href="/view/<%= entry.id %>"><%= entry.create_date.humanize %></a></span>
-<span class="by">via <a href="http://twitter.com/<%= entry.username %>">@<%= entry.username %></a></span>
+<div class="entry">
+  <div class="reason"> <%= entry.html %> </div>
+  <div class="meta">
+    <span class="when"> @ <a href="/view/<%= entry.id %>"><%= entry.create_date.humanize %></a></span>
+    <span class="by">via <a href="http://twitter.com/<%= entry.username %>">@<%= entry.username %></a></span>
+  </div>
+</div>

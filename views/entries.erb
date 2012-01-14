@@ -1,7 +1,5 @@
-<ul>
+<div class="entries">
   <% entries.each do |entry| %>
-    <li>
-      <%= erb :entry, :locals => { 'entry' => entry } %>
-    </li>
+    <%= erb :entry, :locals => { 'entry' => entry } %>
   <% end %>
-</ul>
+</div>
