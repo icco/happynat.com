@@ -36,10 +36,10 @@ post '/' do
 end
 
 # For getting a period of time.
-get '/date/:year/:month/:day' do
-  day = params['day'].to_i
-  month = params['month'].to_i
-  year = params['year'].to_i
+get %r{/date/(\d{4})/(\d{1,2})/(\d{1,2})/?} do
+  day =   params[:captures][2].to_i
+  month = params[:captures][1].to_i
+  year =  params[:captures][0].to_i
 
   erb :day, :locals => {
     :entries => Entry.filter(
@@ -51,10 +51,10 @@ get '/date/:year/:month/:day' do
   }
 end
 
-get '/date/:year/:month' do
+get %r{/date/(\d{4})/(\d{1,2})/?} do
   day = 1
-  month = params['month'].to_i
-  year = params['year'].to_i
+  month = params[:captures][1].to_i
+  year =  params[:captures][0].to_i
 
   erb :month, :locals => {
     :entries => Entry.filter(
@@ -66,10 +66,10 @@ get '/date/:year/:month' do
   }
 end
 
-get '/date/:year' do
+get %r{/date/(\d{4})/?} do
   day = 1
   month = 1
-  year = params['year'].to_i
+  year = params[:captures][0].to_i
 
   erb :year, :locals => {
     :entries => Entry.filter(
