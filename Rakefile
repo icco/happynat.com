@@ -48,7 +48,7 @@ end
 
 desc "Run a local server."
 task :local do
-  sh "bundle exec shotgun -s thin -p 3000"
+  sh "bundle exec shotgun -p 3000"
 end
 
 desc "Send an email to nat@natwelch.com if he needs to post today."

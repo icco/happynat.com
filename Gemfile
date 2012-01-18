@@ -7,7 +7,6 @@ gem "rake"
 gem "rdiscount"
 gem "sequel"
 gem "sinatra"
-gem "thin"
 
 # For Authentication
 gem "omniauth", :git => "https://github.com/intridea/omniauth.git"
