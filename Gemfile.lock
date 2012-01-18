@@ -80,6 +80,7 @@ DEPENDENCIES
   omniauth-twitter
   pg
   pony
+  rack (~> 1.4)
   rake
   rdiscount
   sequel

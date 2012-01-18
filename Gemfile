@@ -3,6 +3,7 @@ source :rubygems
 gem "chronic"
 gem "json"
 gem "less"
+gem "rack", "~> 1.4"
 gem "rake"
 gem "rdiscount"
 gem "sequel"
