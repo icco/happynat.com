@@ -56,6 +56,6 @@ task :email_nat do
   DB = Sequel.connect(ENV['DATABASE_URL'] || 'sqlite://db/data.db')
   require './models'
 
-  puts "Emailing Nat... "
-  print Entry.send_reminder
+  print "Emailing Nat... "
+  puts Entry.send_reminder
 end

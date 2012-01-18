@@ -38,8 +38,9 @@ class Entry < Sequel::Model(:entries)
 
     if entry_count < 1
       Pony.mail(
-        :from => 'server@happynat.com',
-        :to => 'nat@natwelch.com',
+        :from => "server@happynat.com",
+        :to => "nat@natwelch.com",
+        :subject => "What makes you happy on #{Time.now.strftime("%D")}?"
         :html_body => File.read('views/mail.erb')
       )
 
