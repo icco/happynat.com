@@ -5,6 +5,20 @@ configure do
   DB = Sequel.connect(ENV['DATABASE_URL'] || 'sqlite://db/data.db')
   DB.sql_log_level = :debug
 
+  # Mail Settings
+  Pony.options = {
+    :via => :smtp,
+    :via_options => {
+      :address => 'smtp.sendgrid.net',
+      :port => '587',
+      :domain => 'heroku.com',
+      :user_name => ENV['SENDGRID_USERNAME'],
+      :password => ENV['SENDGRID_PASSWORD'],
+      :authentication => :plain,
+      :enable_starttls_auto => true
+    }
+  }
+
   # for enabling nice errors until we launch
   set :show_exceptions, true
 end
@@ -119,6 +133,26 @@ class Entry < Sequel::Model(:entries)
     )
 
     return markdown.to_html
+  end
+
+  def self.send_reminder
+    month = Time.now.month
+    day   = Time.now.day
+    year  = Time.now.year
+
+    entry_count = Entry.filter(
+      'create_date >= ? and create_date < ?',
+      Chronic.parse("#{month}/#{day}/#{year}"),
+      Chronic.parse("#{month}/#{day+1}/#{year}")
+    ).count
+
+    if entry_count < 1
+      Pony.mail(
+        :from => 'server@happynat.com',
+        :to => 'nat@natwelch.com',
+        :html_body => erb :mail
+      )
+    end
   end
 end
 

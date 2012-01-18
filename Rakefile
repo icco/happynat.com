@@ -47,3 +47,11 @@ desc "Run a local server."
 task :local do
   sh "bundle exec shotgun -s thin -p 3000"
 end
+
+desc "This task is called by the Heroku cron add-on"
+task :cron do
+  if Time.now.hour == 18 # Run at 6pm
+    puts "Checking entries..."
+    Entry.send_reminder
+  end
+end
