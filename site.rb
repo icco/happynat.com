@@ -152,7 +152,11 @@ class Entry < Sequel::Model(:entries)
         :to => 'nat@natwelch.com',
         :html_body => erb :mail
       )
+
+      return true
     end
+
+    return false
   end
 end
 

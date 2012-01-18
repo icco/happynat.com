@@ -50,8 +50,6 @@ end
 
 desc "Send an email to nat@natwelch.com if he needs to post today."
 task :email_nat do
-  if Time.now.hour == 18 # Run at 6pm
-    puts "Checking entries..."
-    Entry.send_reminder
-  end
+  puts "Emailing Nat... "
+  print Entry.send_reminder
 end
