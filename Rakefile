@@ -1,9 +1,12 @@
-# Import in official clean and clobber tasks
+require 'rubygems'
+require 'bundler'
 require 'rake/clean'
+
+Bundler.require
+
 CLEAN.include("db/data.db")
 
 namespace :db do
-  require "sequel"
 
   desc "Bring database schema up to par."
   task :migrate do
@@ -50,6 +53,9 @@ end
 
 desc "Send an email to nat@natwelch.com if he needs to post today."
 task :email_nat do
+  DB = Sequel.connect(ENV['DATABASE_URL'] || 'sqlite://db/data.db')
+  require './models'
+
   puts "Emailing Nat... "
   print Entry.send_reminder
 end

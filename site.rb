@@ -5,19 +5,7 @@ configure do
   DB = Sequel.connect(ENV['DATABASE_URL'] || 'sqlite://db/data.db')
   DB.sql_log_level = :debug
 
-  # Mail Settings
-  Pony.options = {
-    :via => :smtp,
-    :via_options => {
-      :address => 'smtp.sendgrid.net',
-      :port => '587',
-      :domain => 'heroku.com',
-      :user_name => ENV['SENDGRID_USERNAME'],
-      :password => ENV['SENDGRID_PASSWORD'],
-      :authentication => :plain,
-      :enable_starttls_auto => true
-    }
-  }
+  require './models'
 
   # for enabling nice errors until we launch
   set :show_exceptions, true
@@ -124,51 +112,3 @@ end
 post '/auth/:name/callback', &auth
 get  '/auth/:name/callback', &auth
 
-class Entry < Sequel::Model(:entries)
-  def html
-    markdown = RDiscount.new(
-      self.text,
-      :smart,
-      :filter_html
-    )
-
-    return markdown.to_html
-  end
-
-  def self.send_reminder
-    month = Time.now.month
-    day   = Time.now.day
-    year  = Time.now.year
-
-    entry_count = Entry.filter(
-      'create_date >= ? and create_date < ?',
-      Chronic.parse("#{month}/#{day}/#{year}"),
-      Chronic.parse("#{month}/#{day+1}/#{year}")
-    ).count
-
-    if entry_count < 1
-      Pony.mail(
-        :from => 'server@happynat.com',
-        :to => 'nat@natwelch.com',
-        :html_body => erb :mail
-      )
-
-      return true
-    end
-
-    return false
-  end
-end
-
-# Nice time printing
-class Time
-  def humanize
-    if Time.now.strftime("%F") == self.strftime("%F")
-      return self.strftime("%l:%M %P")
-    elsif Time.now.year == self.year
-      return self.strftime("%l%P, %b %e")
-    else
-      return self.strftime("%b %e '%y")
-    end
-  end
-end
