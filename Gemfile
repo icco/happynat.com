@@ -3,7 +3,7 @@ source :rubygems
 gem "chronic"
 gem "json"
 gem "less"
-gem "rack", "~> 1.4"
+gem "rack", git: "https://github.com/rack/rack.git", ref: "e20baec005238f9876281c0d083fe5a4e01aa034"
 gem "rake"
 gem "rdiscount"
 gem "sequel"
