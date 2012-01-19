@@ -3,6 +3,8 @@ require 'bundler'
 
 Bundler.require
 
+require 'uri'
+
 require './site'
 
 require './models'
