@@ -66,7 +66,14 @@ class UrlParser
   # string.
   def self.transformUrl url
 
-    return ""
+    uri = URI.parse url
+
+    case url.host
+    when /*twitter\.com/
+      # do an api call to twitter
+    end
+
+    return "<a href=\"#{url}\">#{url}</a>"
   end
 end
 
