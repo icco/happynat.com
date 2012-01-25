@@ -16,7 +16,7 @@ class UrlParser
     uri = URI.parse url
 
     case url.host
-    when /*twitter\.com/
+    when "twitter.com"
       # do an api call to twitter
     end
 

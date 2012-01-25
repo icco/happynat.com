@@ -1,4 +1,4 @@
-class Happynat < Padrino::Application
+class HappyNat < Padrino::Application
   register LessInitializer
   register Padrino::Rendering
   register Padrino::Mailer

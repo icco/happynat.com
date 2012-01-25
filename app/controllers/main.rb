@@ -1,4 +1,4 @@
-HappNat.controller do
+HappyNat.controller do
   layout :main
 
   get '/' do

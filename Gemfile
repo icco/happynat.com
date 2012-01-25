@@ -1,8 +1,7 @@
 source :rubygems
 
 # Server requirements (defaults to WEBrick)
-# gem 'thin'
-# gem 'mongrel'
+gem 'thin'
 
 # Project requirements
 gem "chronic"
@@ -10,6 +9,11 @@ gem "json"
 gem "rdiscount"
 gem 'rake'
 gem 'sinatra-flash', :require => 'sinatra/flash'
+
+# For Authentication
+gem "omniauth", :git => "https://github.com/intridea/omniauth.git"
+gem "omniauth-twitter"  # https://github.com/arunagw/omniauth-twitter
+gem "multi_json"
 
 # Component requirements
 gem 'erubis', "~> 2.7.0"
