@@ -2,6 +2,7 @@ source :rubygems
 
 # Server requirements (defaults to WEBrick)
 gem 'thin'
+gem 'rack', "~> 1.4.1"
 
 # Project requirements
 gem "chronic"
