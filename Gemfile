@@ -1,30 +1,32 @@
 source :rubygems
 
+# Server requirements (defaults to WEBrick)
+# gem 'thin'
+# gem 'mongrel'
+
+# Project requirements
 gem "chronic"
 gem "json"
-gem "less"
-gem "rack", git: "https://github.com/rack/rack.git", ref: "e20baec005238f9876281c0d083fe5a4e01aa034"
-gem "rake"
 gem "rdiscount"
-gem "sequel"
-gem "sinatra"
+gem 'rake'
+gem 'sinatra-flash', :require => 'sinatra/flash'
 
-# For Authentication
-gem "omniauth", :git => "https://github.com/intridea/omniauth.git"
-gem "omniauth-twitter"  # https://github.com/arunagw/omniauth-twitter
-gem "multi_json"
+# Component requirements
+gem 'erubis', "~> 2.7.0"
+gem 'rack-less'
+gem 'sequel'
 
-# For sending email
-gem "pony" # http://devcenter.heroku.com/articles/sendgrid
+# Padrino Stable Gem
+gem 'padrino'
 
-# For heroku
+# Database
 group :production do
   gem "pg"
 end
 
 # For dev.
 group :development, :test do
-  gem "sqlite3"
   gem "heroku"
   gem "shotgun"
+  gem "sqlite3"
 end

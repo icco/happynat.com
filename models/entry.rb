@@ -1,5 +1,3 @@
-# All of the models used by happynat
-
 class Entry < Sequel::Model(:entries)
   def html
     markdown = RDiscount.new(
@@ -51,41 +49,3 @@ class Entry < Sequel::Model(:entries)
   end
 end
 
-# The goal of this class is to provide an easy way to transform links into
-# images, videos and flash embeds.
-class UrlParser
-
-  # Given a block of text, return an array of urls contained within.
-  def self.getUrls text
-    protocols = %w[http https ftp]
-
-    return protocols.map {|pr| URI::extract(text, pr) }.flatten.compact
-  end
-
-  # Given an URL, return html of the content the URL represents, or an empty
-  # string.
-  def self.transformUrl url
-
-    uri = URI.parse url
-
-    case url.host
-    when /*twitter\.com/
-      # do an api call to twitter
-    end
-
-    return "<a href=\"#{url}\">#{url}</a>"
-  end
-end
-
-# Nice time printing
-class Time
-  def humanize
-    if Time.now.strftime("%F") == self.strftime("%F")
-      return self.strftime("%l:%M %P")
-    elsif Time.now.year == self.year
-      return self.strftime("%l%P, %b %e")
-    else
-      return self.strftime("%b %e '%y")
-    end
-  end
-end
