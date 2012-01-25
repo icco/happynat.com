@@ -11,7 +11,7 @@ namespace :db do
   desc "Bring database schema up to par."
   task :migrate do
     db_url = ENV['DATABASE_URL'] || "sqlite://db/data.db"
-    migrations_dir = "./db/migrations/"
+    migrations_dir = "./db/migrate/"
 
     puts "Migrating from '#{migrations_dir}' into '#{db_url}'."
 
