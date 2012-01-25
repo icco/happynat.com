@@ -1,18 +1,2 @@
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-
-    <title>Happy Nat .com</title>
-
-    <link rel="stylesheet" href="/css/reset.css" />
-    <link rel="stylesheet" href="/css/text.css" />
-    <link rel="stylesheet" href="/css/style.css" />
-  </head>
-  <body>
-    <div class="container">
-      <%= date.year %>
-      <%= erb :entries, :locals => { 'entries' => entries } %>
-    </div> <!-- end .container -->
-  </body>
-</html>
+<%= date.year %>
+<%= erb :entries, :locals => { 'entries' => entries } %>

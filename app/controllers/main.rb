@@ -1,11 +1,12 @@
 HappNat.controller do
+  layout :main
 
   get '/' do
-    erb :index
+    render :index
   end
 
   get '/list' do
-    erb :list, :locals => { :entries => Entry.all }
+    render :list, :locals => { :entries => Entry.all }
   end
 
   post '/' do
@@ -26,7 +27,7 @@ HappNat.controller do
     month = params[:captures][1].to_i
     year =  params[:captures][0].to_i
 
-    erb :day, :locals => {
+    render :day, :locals => {
       :entries => Entry.filter(
         'create_date >= ? and create_date < ?',
         Chronic.parse("#{month}/#{day}/#{year}"),
@@ -41,7 +42,7 @@ HappNat.controller do
     month = params[:captures][1].to_i
     year =  params[:captures][0].to_i
 
-    erb :month, :locals => {
+    render :month, :locals => {
       :entries => Entry.filter(
         'create_date >= ? and create_date < ?',
         Chronic.parse("#{month}/#{day}/#{year}"),
@@ -56,7 +57,7 @@ HappNat.controller do
     month = 1
     year = params[:captures][0].to_i
 
-    erb :year, :locals => {
+    render :year, :locals => {
       :entries => Entry.filter(
         'create_date >= ? and create_date < ?',
         Chronic.parse("#{day}/#{month}/#{year}"),
@@ -73,11 +74,6 @@ HappNat.controller do
     else
       404
     end
-  end
-
-  get '/css/style.css' do
-    content_type 'text/css', :charset => 'utf-8'
-    less :"css/style"
   end
 
   # Auth Lambda.
