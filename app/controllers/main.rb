@@ -6,7 +6,7 @@ HappyNat.controller do
   end
 
   get '/list' do
-    render :list, :locals => { :entries => Entry.all.order(:create_date.desc) }
+    render :list, :locals => { :entries => Entry.order(:create_date.desc).all }
   end
 
   post '/' do
