@@ -24,7 +24,7 @@ class UrlParser
     else
       ct = HTTParty.head(url).headers["content-type"]
       if %r{image/.*}.match ct
-        "<img src=\"#{url}\">"
+        "<a href=\"#{url}\"><img src=\"#{url}\"></a>"
       else
         "<a href=\"#{url}\">#{url}</a>"
       end
