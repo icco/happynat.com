@@ -24,6 +24,9 @@ gem 'sequel'
 # Padrino Stable Gem
 gem 'padrino'
 
+# For URLPARSER
+gem "ruby-oembed", :require => 'oembed'
+
 # Database
 group :production do
   gem "pg"

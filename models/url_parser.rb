@@ -15,11 +15,16 @@ class UrlParser
 
     uri = URI.parse url
 
-    case url.host
+    html = case url.host
     when "twitter.com"
       # do an api call to twitter
+    when "youtube.com"
+      embed =  OEmbed::Providers::Youtube.get(url)
+      embed.html
+    else
+      "<a href=\"#{url}\">#{url}</a>"
     end
 
-    return "<a href=\"#{url}\">#{url}</a>"
+    return html
   end
 end

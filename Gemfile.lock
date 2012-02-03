@@ -91,6 +91,7 @@ GEM
     rdiscount (1.6.8)
     rest-client (1.6.7)
       mime-types (>= 1.16)
+    ruby-oembed (0.8.5)
     rubyzip (0.9.5)
     sequel (3.32.0)
     shotgun (0.9)
@@ -134,6 +135,7 @@ DEPENDENCIES
   rack-less
   rake
   rdiscount
+  ruby-oembed
   sequel
   shotgun
   sinatra-flash
