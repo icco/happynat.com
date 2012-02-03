@@ -5,9 +5,11 @@
 
     <title>Happy Nat</title>
 
-    <link rel="stylesheet" href="/stylesheets/reset.css" />
-    <link rel="stylesheet" href="/stylesheets/text.css" />
-    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <%= stylesheet_link_tag :rest %>
+    <%= stylesheet_link_tag :text %>
+    <%= stylesheet_link_tag :style %>
+    <%= javascript_include_tag "jquery" %>
+    <%= javascript_include_tag "jquery.masonry.min" %>
   </head>
   <body>
     <div class="container">
