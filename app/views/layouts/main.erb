@@ -14,7 +14,10 @@
   </head>
   <body>
     <div class="container">
-      <h1>Happy Nat.</h1>
+      <h1><a href="/">Happy Nat</a>.</h1>
+      <div class="nav">
+        <a href="/list">all</a> | <a href="/today">today</a> | <a href="/date/<%= Time.now.year %>/<%= Time.now.month %>">this month</a>
+      </div>
 
       <%= yield %>
 

@@ -18,7 +18,12 @@ HappyNat.controller do
       entry.save
     end
 
-    redirect '/'
+    redirect '/list'
+  end
+
+  get '/today' do
+    d = Time.now
+    redirect "/date/#{d.year}/#{d.month}/#{d.day}"
   end
 
   # For getting a period of time.
