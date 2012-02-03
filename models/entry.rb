@@ -3,7 +3,7 @@ class Entry < Sequel::Model(:entries)
     html = self.text.split(" ").map do |text|
       return (UrlParser.getUrls(text).map do |url|
         UrlParser.transformUrl(url)
-      end or text)
+      end.join("") or text)
     end.join(" ")
 
     return "<p>#{html}</p>"
