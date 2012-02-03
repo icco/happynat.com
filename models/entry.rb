@@ -8,7 +8,7 @@ class Entry < Sequel::Model(:entries)
       if parsed.empty?
         text
       else
-        parsed
+        "<div>#{parsed}</div>"
       end
     end.join(" ")
 
