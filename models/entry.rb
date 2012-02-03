@@ -1,6 +1,10 @@
 class Entry < Sequel::Model(:entries)
   def html
-    html = self.text.split(" ").map {|text| UrlParser.getUrls(text).map {|url| UrlParser.transformUrl(url) }.join(" ") }.join(" ")
+    html = self.text.split(" ").map do |text|
+      return UrlParser.getUrls(text).map do |url|
+        UrlParser.transformUrl(url)
+      end or text
+    end.join(" ")
 
     return "<p>#{html}</p>"
   end
