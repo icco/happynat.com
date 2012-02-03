@@ -22,7 +22,12 @@ class UrlParser
       embed =  OEmbed::Providers::Youtube.get(url)
       embed.html
     else
-      "<a href=\"#{url}\">#{url}</a>"
+      ct = HTTParty.head(uri).headers["content-type"]
+      if %r{image/.*}.match ct
+        "<img src=\"#{url}\">"
+      else
+        "<a href=\"#{url}\">#{url}</a>"
+      end
     end
 
     return html

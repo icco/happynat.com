@@ -26,6 +26,7 @@ gem 'padrino'
 
 # For URLPARSER
 gem "ruby-oembed", :require => 'oembed'
+gem "httparty"
 
 # Database
 group :production do
