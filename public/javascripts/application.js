@@ -1,1 +1,5 @@
-// Put your application scripts here
+// APPLICATION.
+
+$('entries').masonry({
+  columnWidth: 240
+});
