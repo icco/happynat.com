@@ -1,7 +1,7 @@
 class Entry < Sequel::Model(:entries)
   def html
 
-    html = UrlParser.getUrls(self.text).map {|url| UrlParser.transformUrl(url) }
+    html = UrlParser.getUrls(self.text).map {|url| UrlParser.transformUrl(url) }.join(" ")
 
     return self.text + html
   end
