@@ -1,9 +1,8 @@
 class Entry < Sequel::Model(:entries)
   def html
+    html = self.text.split(" ").map {|text| UrlParser.getUrls(text).map {|url| UrlParser.transformUrl(url) }.join(" ") }.join(" ")
 
-    html = UrlParser.getUrls(self.text).map {|url| UrlParser.transformUrl(url) }.join(" <br /> ")
-
-    return "<p>#{self.text}</p> <div>#{html}</div>"
+    return "<p>#{html}</p>"
   end
 
   def self.send_reminder
