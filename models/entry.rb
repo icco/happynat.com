@@ -1,12 +1,9 @@
 class Entry < Sequel::Model(:entries)
   def html
-    markdown = RDiscount.new(
-      self.text,
-      :smart,
-      :filter_html
-    )
 
-    return markdown.to_html
+    html = UrlParser.getUrls(self.text).map {|url| UrlParser.transformUrl(url) }
+
+    return self.text + html
   end
 
   def self.send_reminder

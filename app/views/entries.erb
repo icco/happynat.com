@@ -1,5 +1,5 @@
 <div class="entries">
   <% entries.each do |entry| %>
-    <%= erb :entry, :locals => { 'entry' => entry } %>
+    <%= partial :entry, :locals => { 'entry' => entry } %>
   <% end %>
 </div>
