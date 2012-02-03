@@ -15,7 +15,7 @@ class UrlParser
 
     uri = URI.parse url
 
-    html = case url.host
+    html = case uri.host
     when "twitter.com"
       # do an api call to twitter
     when "youtube.com"
