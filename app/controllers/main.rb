@@ -94,7 +94,6 @@ HappyNat.controller do
   post '/edit/:id' do
     if params[:id].to_i
       entry = Entry.filter(:id => params[:id]).first
-      p params
 
       if params["entry"] and params["entry"]["text"] and session["username"] == entry.username
         entry.text = params["entry"]["text"]
