@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/intridea/omniauth.git
-  revision: fbd165581edfab5fd9f5408be53f16af10511534
+  revision: 21b8db64c31a8efa049ac4d81bcb10d0e4de5f43
   specs:
     omniauth (1.0.2)
       hashie (~> 1.2)
@@ -134,7 +134,7 @@ DEPENDENCIES
   multi_json
   omniauth!
   omniauth-twitter
-  padrino
+  padrino (= 0.10.5)
   pg
   rack (~> 1.4.1)
   rack-less

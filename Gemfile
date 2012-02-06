@@ -22,7 +22,7 @@ gem 'rack-less'
 gem 'sequel'
 
 # Padrino Stable Gem
-gem 'padrino'
+gem 'padrino', '= 0.10.5'
 
 # For URLPARSER
 gem "ruby-oembed", :require => 'oembed'
@@ -38,4 +38,7 @@ group :development, :test do
   gem "heroku"
   gem "shotgun"
   gem "sqlite3"
+
+  # Until Taps Fixes dependency issues, just gem install.
+  #gem "taps", :git => 'git://github.com/ricardochimal/taps.git'
 end
