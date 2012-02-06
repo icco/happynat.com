@@ -96,8 +96,8 @@ HappyNat.controller do
       entry = Entry.filter(:id => params[:id]).first
       p params
 
-      if params["text"] and session["username"] == entry.username
-        entry.text = params["text"]
+      if params["entry"] and params["entry"]["text"] and session["username"] == entry.username
+        entry.text = params["entry"]["text"]
         entry.save
       end
 
