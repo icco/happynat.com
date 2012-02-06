@@ -3,5 +3,8 @@
   <div class="meta">
     <span class="when"> @ <a href="/view/<%= entry.id %>"><%= entry.create_date.humanize %></a></span>
     <span class="by">via <a href="http://twitter.com/<%= entry.username %>">@<%= entry.username %></a></span>
+    <% if session['username'] == entry.username %>
+      <span class="edit"> @ <a href="/edit/<%= entry.id %>">e</a></span>
+    <% end %>
   </div>
 </div>

@@ -81,6 +81,31 @@ HappyNat.controller do
     end
   end
 
+  get '/edit/:id' do
+    if params[:id].to_i
+      entry = Entry.filter(:id => params[:id]).first
+
+      render :edit, :locals => { :entry => entry }
+    else
+      404
+    end
+  end
+
+  post '/edit/:id' do
+    if params[:id].to_i
+      entry = Entry.filter(:id => params[:id]).first
+
+      if !session["username"].nil? and session["username"] == entry.username
+        entry.text = params["text"]
+        entry.save
+      end
+
+      redirect "/view/#{params[:id]}"
+    else
+      404
+    end
+  end
+
   # Auth Lambda.
   auth = lambda do
     auth = request.env['omniauth.auth']

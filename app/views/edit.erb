@@ -1,0 +1,10 @@
+<% form_for entry do |f| %>
+  <%= f.error_messages %>
+  <p> 
+  <%= f.label :text, :caption => "Text" %>
+  <%= f.text_field :text %>
+  </p>
+  <p>
+  <%= f.submit "update", :class => 'button' %>
+  </p>
+<% end %>
