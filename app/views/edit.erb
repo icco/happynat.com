@@ -1,4 +1,4 @@
-<% form_for entry do |f| %>
+<% form_for entry, "/edit/#{entry.id}" do |f| %>
   <%= f.error_messages %>
   <p> 
   <%= f.label :text, :caption => "Text" %>
