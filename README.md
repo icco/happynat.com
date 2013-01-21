@@ -10,7 +10,7 @@ I want to write in things that make me happy every day.
  * rotating front page image
  * twitter scrapper
  * Switch to using layouts
- * use masonary to layout posts
+ * use [masonary](http://masonry.desandro.com/) to layout posts
  * pull in stuff from external sites
    * twitter
    * pinboard
