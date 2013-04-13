@@ -1,7 +1,51 @@
-Sequel::Model.plugin(:schema)
-Sequel::Model.raise_on_save_failure = false # Do not throw exceptions on failure
-Sequel::Model.db = case Padrino.env
-  when :development then Sequel.connect("sqlite://" + Padrino.root('db', "happynat_development.db"), :loggers => [logger])
-  when :test        then Sequel.connect("sqlite://" + Padrino.root('db', "happynat_test.db"),        :loggers => [logger])
-  when :production  then Sequel.connect(ENV['DATABASE_URL'],                                         :loggers => [logger])
+##
+# Database config for relational db.
+connections = {
+  :development => "postgres://localhost/HappyNat",
+  :test => "postgres://postgres@localhost/HappyNat_test",
+  :production => ENV['DATABASE_URL']
+}
+
+# Setup our logger
+ActiveRecord::Base.logger = logger
+
+# Include Active Record class name as root for JSON serialized output.
+ActiveRecord::Base.include_root_in_json = true
+
+# Store the full class name (including module namespace) in STI type column.
+ActiveRecord::Base.store_full_sti_class = true
+
+# Use ISO 8601 format for JSON serialized times and dates.
+ActiveSupport.use_standard_json_time_format = true
+
+# Don't escape HTML entities in JSON, leave that for the #json_escape helper.
+# if you're including raw json in an HTML page.
+ActiveSupport.escape_html_entities_in_json = false
+
+# Now we can estabilish connection with our db
+if connections[Padrino.env]
+  url = URI(connections[Padrino.env])
+  options = {
+    :adapter => url.scheme,
+    :host => url.host,
+    :port => url.port,
+    :database => url.path[1..-1],
+    :username => url.user,
+    :password => url.password
+  }
+
+  case url.scheme
+  when "sqlite"
+    options[:adapter] = "sqlite3"
+    options[:database] = url.host + url.path
+  when "postgres"
+    options[:adapter] = "postgresql"
+  end
+
+  # Log what we are connecting to.
+  logger.push " DB: #{options.inspect}", :devel
+
+  ActiveRecord::Base.establish_connection(options)
+else
+  logger.push("No database configuration for #{Padrino.env.inspect}", :fatal)
 end

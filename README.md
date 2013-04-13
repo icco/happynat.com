@@ -1,6 +1,6 @@
 # HappyNat.com
 
-I want to write in things that make me happy every day.
+A site to record stuff that makes Nat happy.
 
 ## TODO
 

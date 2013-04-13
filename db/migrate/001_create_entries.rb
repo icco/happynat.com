@@ -1,10 +1,12 @@
-Sequel.migration do
-  change do
-    create_table :entries do
-      primary_key :id
-      String :text
-      String :username
-      DateTime :create_date
+class CreateEntries < ActiveRecord::Migration
+  def self.up
+    create_table :entries do |t|
+      t.text :text
+      t.timestamps
     end
+  end
+
+  def self.down
+    drop_table :entries
   end
 end
