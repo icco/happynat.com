@@ -73,6 +73,8 @@ post "/sms" do
   response = Twilio::TwiML::Response.new do |r|
     r.Message 'hello there'
   end
+
+  response.text
 end
 
 error 400..510 do
