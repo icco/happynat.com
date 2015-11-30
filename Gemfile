@@ -13,7 +13,7 @@ gem "rdiscount"
 gem "sinatra"
 gem "sinatra-activerecord", :require => "sinatra/activerecord"
 gem "thin"
-gem "twilio"
+gem 'twilio-ruby', '~> 4.2.1'
 
 # For dev.
 group :development, :test do
