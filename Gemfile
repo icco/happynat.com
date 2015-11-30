@@ -1,41 +1,20 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
-# Server requirements (defaults to WEBrick)
-gem 'thin'
-gem 'rack', ">= 1.4.1"
+ruby "2.2.3"
 
-# Project requirements
+gem "activerecord", :require => "active_record"
 gem "chronic"
+gem "erubis", "~> 2.7.0"
 gem "json"
+gem "pg"
+gem "rack-protection", :require => "rack/protection"
+gem "rake"
 gem "rdiscount"
-gem 'rake'
-gem 'sinatra-flash', :require => 'sinatra/flash'
-
-# For Authentication
-gem "omniauth-twitter"  # https://github.com/arunagw/omniauth-twitter
-gem "multi_json"
-
-# Component requirements
-gem 'erubis', "~> 2.7.0"
-gem 'rack-less'
-gem 'sequel'
-
-# Padrino Stable Gem
-gem 'padrino', '> 0.10.5'
-
-# For URLPARSER
-gem "ruby-oembed", :require => 'oembed'
-gem "httparty"
-
-# Database
-group :production do
-  gem "pg"
-end
+gem "sinatra"
+gem "sinatra-activerecord", :require => "sinatra/activerecord"
+gem "thin"
 
 # For dev.
 group :development, :test do
   gem "shotgun"
-
-  # Until Taps Fixes dependency issues, just gem install.
-  #gem "taps", :git => 'git://github.com/ricardochimal/taps.git'
 end
