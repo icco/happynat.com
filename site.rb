@@ -5,11 +5,13 @@ Dir[File.dirname(__FILE__) + '/lib/*.rb'].each {|file| require file }
 
 configure do
   RACK_ENV = (ENV['RACK_ENV'] || :development).to_sym
+  p RACK_ENV
   connections = {
     :development => "postgres://localhost/happynat",
     :test => "postgres://postgres@localhost/happynat_test",
     :production => ENV['DATABASE_URL']
   }
+  p connections
 
   url = URI(connections[RACK_ENV])
   options = {
