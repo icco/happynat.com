@@ -36,10 +36,23 @@ configure do
     :path => '/',
     :expire_after => 86400, # 1 day
     :secret => ENV['SESSION_SECRET'] || '*&(^B234'
+
+  Twilio.configure do |config|
+    config.account_sid = ENV['TWILIO_SID']
+    config.auth_token = ENV['TWILIO_TOKEN']
+  end
 end
 
 get "/" do
   erb :index
+end
+
+post "/sms" do
+  #@client = Twilio::REST::Client.new
+  p params
+  response = Twilio::TwiML::Response.new do |r|
+    r.Message 'hello there'
+  end
 end
 
 error 400..510 do
