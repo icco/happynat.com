@@ -13,12 +13,7 @@ end
 
 desc "Send a message."
 task :cron => ["db:load_config"] do
-  @client = Twilio::REST::Client.new
-
-  @client.account.messages.create({
-    :to => '+17077998675',
-    :body => 'How are you feeling today?',
-  })
+  raise "nope"
 end
 
 desc "Run a local server."
