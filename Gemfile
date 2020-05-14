@@ -7,15 +7,15 @@ gem "chronic"
 gem "erubis", "~> 2.7.0"
 gem "json"
 gem "pg"
-gem "rack-protection", :require => "rack/protection"
+gem "rack-protection", ">= 1.5.3", :require => "rack/protection"
 gem "rake"
 gem "rdiscount"
-gem "sinatra"
-gem "sinatra-activerecord", :require => "sinatra/activerecord"
-gem "thin"
+gem "sinatra", ">= 2.0.0"
+gem "sinatra-activerecord", ">= 2.0.12", :require => "sinatra/activerecord"
+gem "thin", ">= 1.7.0"
 gem "twilio-ruby", "~> 4.2.1"
 
 # For dev.
 group :development, :test do
-  gem "shotgun"
+  gem "shotgun", ">= 0.9.1"
 end
